@@ -1,14 +1,18 @@
 package com.wongdarren;
 
+import com.wongdarren.service.ProductService;
 import io.quarkus.scheduler.Scheduled;
 import jakarta.enterprise.context.ApplicationScoped;
-
-import java.util.Random;
+import jakarta.inject.Inject;
+import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class ProductScheduler {
 
-    private static final String[] PRODUCTS = {"Product A", "Product B", "Product C", "Product D"};
+    private static final Logger LOGGER = Logger.getLogger(ProductScheduler.class);
+
+    @Inject
+    ProductService productService;
 
     /**
      * This method is scheduled to run every minute.
@@ -20,8 +24,13 @@ public class ProductScheduler {
      */
     @Scheduled(every = "10s")
     void addRandomProduct() {
-        Random random = new Random();
-        String product = PRODUCTS[random.nextInt(PRODUCTS.length)];
-        System.out.println("Adding product: " + product);
+        LOGGER.info("Adding a product...");
+        try {
+            productService.generateAndSaveProduct();
+            LOGGER.trace("Product added successfully");
+        } catch (Exception e) {
+            LOGGER.errorf(e, "Error occurred while adding a product");
+        }
+        LOGGER.info("Product added...");
     }
 }

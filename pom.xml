@@ -44,6 +44,27 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-scheduler</artifactId>
         </dependency>
+        <!-- Hibernate ORM specific dependencies -->
+        <dependency>
+            <artifactId>quarkus-hibernate-orm-panache</artifactId>
+            <groupId>io.quarkus</groupId>
+        </dependency>
+        <!-- PostgreSQL database -->
+        <dependency>
+            <artifactId>quarkus-jdbc-postgresql</artifactId>
+            <groupId>io.quarkus</groupId>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+            <artifactId>jboss-logging</artifactId>
+            <groupId>org.jboss.logging</groupId>
+        </dependency>
+        <!-- Health Check -->
+        <dependency>
+            <artifactId>quarkus-smallrye-health</artifactId>
+            <groupId>io.quarkus</groupId>
+        </dependency>
+        <!-- Unit tests -->
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-junit5</artifactId>
