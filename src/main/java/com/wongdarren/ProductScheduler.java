@@ -22,7 +22,7 @@ public class ProductScheduler {
      * Every 2 hours: @Scheduled(every = "2h")
      * Every 1 hour and 30 minutes: @Scheduled(every = "1h30m")
      */
-    @Scheduled(every = "10s")
+    @Scheduled(every = "1m")
     void addRandomProduct() {
         LOGGER.info("Adding a product...");
         try {
